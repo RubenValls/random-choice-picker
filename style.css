@@ -1,0 +1,51 @@
+body{
+    margin: 0;
+    background-color: #2C87F0;
+    font-family: 'Muli', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.container{
+    width: 80%;
+    max-width: 550px;
+    height: auto;
+}
+
+.container > h2 {
+    text-align: center;
+    color: white;
+    font-size: large;
+    margin: 0px 50px 20px 50px;
+}
+
+.container > textarea {
+    margin: auto;
+    font-family: 'Muli', sans-serif;
+    font-size: medium;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    width: 100%;
+}
+
+.choices-container{
+    margin-top: 20px;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.choice{
+    width: auto;
+    height: auto;
+    margin: 5px;
+    font-size: medium;
+    font-size: 15px;
+    color: white;
+    padding: 10px 20px;
+    background-color: #EF932B;
+    border-radius: 25px;
+}
