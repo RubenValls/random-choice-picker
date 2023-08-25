@@ -1,5 +1,6 @@
 const textarea = document.querySelector('#choices')
 const choices = document.querySelector('.choices-container')
+const button = document.querySelector('#btn')
 let choicesArray = []
 
 const aleatoryChoice = (allChoices) => {
@@ -10,6 +11,22 @@ const aleatoryChoice = (allChoices) => {
     const numberOption = Math.floor(Math.random() * (options - 0 + 1) + 0);
     allChoices[numberOption].style.backgroundColor =  '#273C75';
 }
+
+const startPicker = () => {
+    const allChoices = document.querySelectorAll('.choice')
+    textarea.value = '';
+    textarea.blur()
+    if(allChoices.length > 0){
+        let choicesInterval =  setInterval(() => aleatoryChoice(allChoices), 150);
+        setTimeout(() => { 
+            clearInterval(choicesInterval); 
+        }, 3000);
+    }
+}
+
+button.addEventListener("click", () => {
+    startPicker();
+})
 
 textarea.addEventListener("input", () => {
     let choicesHtml = '';
@@ -24,14 +41,6 @@ textarea.addEventListener("input", () => {
 
 textarea.addEventListener("keydown", (event) => {
     if(event.keyCode == 13){
-        const allChoices = document.querySelectorAll('.choice')
-        textarea.value = '';
-        textarea.blur()
-        if(allChoices.length > 0){
-            let choicesInterval =  setInterval(() => aleatoryChoice(allChoices), 150);
-            setTimeout(() => { 
-                clearInterval(choicesInterval); 
-            }, 3000);
-        }
+        startPicker()
     }
 })
