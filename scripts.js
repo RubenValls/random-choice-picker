@@ -11,16 +11,8 @@ const aleatoryChoice = (allChoices) => {
     allChoices[numberOption].style.backgroundColor =  '#273C75';
 }
 
-textarea.addEventListener("keydown", (event) => {
-    if(event.keyCode == 13){
-        const allChoices = document.querySelectorAll('.choice')
-        textarea.value = '';
-        textarea.blur()
-        if(allChoices.length > 0){
-            aleatoryChoice(allChoices)
-        }
-    }else{
-        let choicesHtml = '';
+textarea.addEventListener("input", () => {
+    let choicesHtml = '';
         choicesArray = textarea.value.split(',')
         choicesArray.forEach((choice) => {
             if(choice){
@@ -28,5 +20,18 @@ textarea.addEventListener("keydown", (event) => {
             }
         })
         choices.innerHTML = choicesHtml;
+})
+
+textarea.addEventListener("keydown", (event) => {
+    if(event.keyCode == 13){
+        const allChoices = document.querySelectorAll('.choice')
+        textarea.value = '';
+        textarea.blur()
+        if(allChoices.length > 0){
+            let choicesInterval =  setInterval(() => aleatoryChoice(allChoices), 150);
+            setTimeout(() => { 
+                clearInterval(choicesInterval); 
+            }, 3000);
+        }
     }
 })
